@@ -7,7 +7,6 @@ public:
 	Nodo *ant;
 
 	Nodo(int n);
-	Nodo(int n, Nodo *s, Nodo *a);
 	~Nodo();
 };
 

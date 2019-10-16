@@ -12,13 +12,9 @@ public:
 	int Pila::Pop();
 	void Pila::Llenar();
 	int Pila::Buscar(int n);
-//	Carta *Pila::UltimaCartaVolteada();
-//	int Pila::CantidadCartasVolteadas();
 	System::String^Pila::String();
+
 private:
-/*	Carta *Pila::UltimaCartaVolteadaRecursiva(Carta *pos);
-	int Pila::CantidadCartasVolteadasRecursiva(Carta *pos);
-*/
 	int Pila::BuscarRecursivo(int n, Nodo *pos);
 	System::String^Pila::StringRecursivo(Nodo *pos);
 };

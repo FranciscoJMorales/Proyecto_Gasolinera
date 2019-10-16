@@ -45,22 +45,13 @@ int Pila::Buscar(int n) {
 	}
 }
 
-/*Carta *Pila::UltimaCartaVolteada() {
-	return UltimaCartaVolteadaRecursiva(head);
-}
-
-int Pila::CantidadCartasVolteadas() {
-	return CantidadCartasVolteadasRecursiva(head);
-}
-*/
-
 System::String^Pila::String() {
 	return StringRecursivo(head);
 }
 
 int Pila::BuscarRecursivo(int n, Nodo *pos) {
-	if (pos->numero = n) {
-		return 1;
+	if (pos->numero == n) {
+		return 0;
 	}
 	else {
 		if (pos->sig == nullptr) {
@@ -72,42 +63,13 @@ int Pila::BuscarRecursivo(int n, Nodo *pos) {
 	}
 }
 
-/*Carta *Pila::UltimaCartaVolteadaRecursiva(Carta *pos) {
-	if (pos->sig != nullptr) {
-		if (pos->sig->volteado) {
-			return UltimaCartaVolteadaRecursiva(pos->sig);
-		}
-		else {
-			return pos;
-		}
-	}
-	else {
-		return pos;
-	}
-}
-
-int Pila::CantidadCartasVolteadasRecursiva(Carta *pos) {
-	if (pos->sig != nullptr) {
-		if (pos->sig->volteado) {
-			return CantidadCartasVolteadasRecursiva(pos->sig) + 1;
-		}
-		else {
-			return 1;
-		}
-	}
-	else {
-		return 1;
-	}
-}
-*/
-
 System::String^Pila::StringRecursivo(Nodo *pos) {
 	if (pos != nullptr) {
 		if (pos->sig == nullptr) {
 			return System::Convert::ToString(pos->numero);
 		}
 		else {
-			return StringRecursivo(pos->sig) + "\n" + pos->numero;
+			return System::Convert::ToString(pos->numero) + "\n" + StringRecursivo(pos->sig);
 		}
 	}
 	else {

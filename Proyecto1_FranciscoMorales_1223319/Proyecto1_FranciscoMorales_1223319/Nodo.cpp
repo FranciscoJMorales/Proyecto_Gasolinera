@@ -9,13 +9,6 @@ Nodo::Nodo(int n)
 	ant = nullptr;
 }
 
-Nodo::Nodo(int n, Nodo *s, Nodo *a)
-{
-	numero = n;
-	sig = s;
-	ant = a;
-}
-
 
 Nodo::~Nodo()
 {

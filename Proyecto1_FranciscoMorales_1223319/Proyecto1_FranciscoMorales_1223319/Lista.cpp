@@ -21,13 +21,24 @@ void Lista::Agregar(Nodo *nuevo) {
 	}
 }
 
-int Lista::Eliminar(int n) {
+int Lista::Eliminar() {
 	if (head != nullptr) {
-		EliminarRecursivo(n, head);
+		int n = head->numero;
+		head = head->sig;
+		if (head != nullptr) {
+			head->ant = nullptr;
+		}
+		return n;
 	}
 	else {
 		return -1;
 	}
+}
+
+System::String^Lista::String() {
+	System::String ^estado = StringRecursivo(head);
+	estado = "Q" + estado->Insert(2, ".");
+	return estado;
 }
 
 void Lista::AgregarRecursivo(Nodo *nuevo, Nodo *pos) {
@@ -40,24 +51,16 @@ void Lista::AgregarRecursivo(Nodo *nuevo, Nodo *pos) {
 	}
 }
 
-int Lista::EliminarRecursivo(int n, Nodo *pos) {
-	if (pos->numero == n) {
-		if (pos->sig != nullptr) {
-			pos->sig->ant = pos->ant;
-
-		}
-		if (pos->ant != nullptr) {
-			pos->ant->sig = pos->sig;
-
-		}
-		return pos->numero;
-	}
-	else {
-		if (pos->sig != nullptr) {
-			return EliminarRecursivo(n, pos->sig);
+System::String^Lista::StringRecursivo(Nodo *pos) {
+	if (pos != nullptr) {
+		if (pos->sig == nullptr) {
+			return System::Convert::ToString(pos->numero);
 		}
 		else {
-			return -1;
+			return System::Convert::ToString(pos->numero) + StringRecursivo(pos->sig);
 		}
+	}
+	else {
+		return "----";
 	}
 }

@@ -13,8 +13,10 @@ public:
 	int Cola::Shift();
 	void Cola::Llenar();
 	int Cola::Buscar(int n);
+	System::String^Cola::String();
 
 private:
 	int Cola::BuscarRecursivo(int n, Nodo *pos);
+	System::String^Cola::StringRecursivo(Nodo *pos);
 };
 

@@ -59,7 +59,7 @@ int Cola::Buscar(int n) {
 	else {
 		if (tail == head) {
 			if (tail->numero == n) {
-				return 1;
+				return 0;
 			}
 			else {
 				return -1;
@@ -71,9 +71,18 @@ int Cola::Buscar(int n) {
 	}
 }
 
+System::String^Cola::String() {
+	if (tail == head) {
+		return System::Convert::ToString(tail->numero);
+	}
+	else {
+		return StringRecursivo(tail);
+	}
+}
+
 int Cola::BuscarRecursivo(int n, Nodo *pos) {
-	if (pos->numero = n) {
-		return 1;
+	if (pos->numero == n) {
+		return 0;
 	}
 	else {
 		if (pos->ant == nullptr) {
@@ -82,5 +91,19 @@ int Cola::BuscarRecursivo(int n, Nodo *pos) {
 		else {
 			return 1 + BuscarRecursivo(n, pos->ant);
 		}
+	}
+}
+
+System::String^Cola::StringRecursivo(Nodo *pos) {
+	if (pos != nullptr) {
+		if (pos->ant == nullptr) {
+			return System::Convert::ToString(pos->numero);
+		}
+		else {
+			return System::Convert::ToString(pos->numero) + "\n" + StringRecursivo(pos->ant);
+		}
+	}
+	else {
+		return "--";
 	}
 }
