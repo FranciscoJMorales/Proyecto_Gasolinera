@@ -57,6 +57,8 @@ namespace Proyecto1_FranciscoMorales_1223319 {
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::Button^  ordenar_Btn;
 	private: System::Windows::Forms::Button^  reiniciar_Btn;
+	private: System::Windows::Forms::Label^  label3;
+	private: System::Windows::Forms::Label^  label4;
 
 
 
@@ -94,6 +96,8 @@ namespace Proyecto1_FranciscoMorales_1223319 {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->ordenar_Btn = (gcnew System::Windows::Forms::Button());
 			this->reiniciar_Btn = (gcnew System::Windows::Forms::Button());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->estadosGbx->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -127,7 +131,7 @@ namespace Proyecto1_FranciscoMorales_1223319 {
 			// 
 			// precio1Tbx
 			// 
-			this->precio1Tbx->Location = System::Drawing::Point(106, 42);
+			this->precio1Tbx->Location = System::Drawing::Point(118, 42);
 			this->precio1Tbx->MaxLength = 5;
 			this->precio1Tbx->Name = L"precio1Tbx";
 			this->precio1Tbx->Size = System::Drawing::Size(100, 20);
@@ -135,7 +139,7 @@ namespace Proyecto1_FranciscoMorales_1223319 {
 			// 
 			// precio2Tbx
 			// 
-			this->precio2Tbx->Location = System::Drawing::Point(106, 108);
+			this->precio2Tbx->Location = System::Drawing::Point(118, 108);
 			this->precio2Tbx->MaxLength = 5;
 			this->precio2Tbx->Name = L"precio2Tbx";
 			this->precio2Tbx->Size = System::Drawing::Size(100, 20);
@@ -229,7 +233,7 @@ namespace Proyecto1_FranciscoMorales_1223319 {
 			// eliminar1_Btn
 			// 
 			this->eliminar1_Btn->Enabled = false;
-			this->eliminar1_Btn->Location = System::Drawing::Point(212, 40);
+			this->eliminar1_Btn->Location = System::Drawing::Point(224, 40);
 			this->eliminar1_Btn->Name = L"eliminar1_Btn";
 			this->eliminar1_Btn->Size = System::Drawing::Size(75, 23);
 			this->eliminar1_Btn->TabIndex = 12;
@@ -240,7 +244,7 @@ namespace Proyecto1_FranciscoMorales_1223319 {
 			// eliminar2_Btn
 			// 
 			this->eliminar2_Btn->Enabled = false;
-			this->eliminar2_Btn->Location = System::Drawing::Point(212, 106);
+			this->eliminar2_Btn->Location = System::Drawing::Point(224, 106);
 			this->eliminar2_Btn->Name = L"eliminar2_Btn";
 			this->eliminar2_Btn->Size = System::Drawing::Size(75, 23);
 			this->eliminar2_Btn->TabIndex = 13;
@@ -251,7 +255,7 @@ namespace Proyecto1_FranciscoMorales_1223319 {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(103, 24);
+			this->label1->Location = System::Drawing::Point(115, 24);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(49, 13);
 			this->label1->TabIndex = 14;
@@ -260,7 +264,7 @@ namespace Proyecto1_FranciscoMorales_1223319 {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(103, 92);
+			this->label2->Location = System::Drawing::Point(115, 92);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(49, 13);
 			this->label2->TabIndex = 15;
@@ -287,11 +291,31 @@ namespace Proyecto1_FranciscoMorales_1223319 {
 			this->reiniciar_Btn->UseVisualStyleBackColor = true;
 			this->reiniciar_Btn->Click += gcnew System::EventHandler(this, &MyForm::Reiniciar_Btn_Click);
 			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(103, 45);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(15, 13);
+			this->label3->TabIndex = 18;
+			this->label3->Text = L"Q";
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Location = System::Drawing::Point(103, 111);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(15, 13);
+			this->label4->TabIndex = 19;
+			this->label4->Text = L"Q";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(611, 399);
+			this->Controls->Add(this->label4);
+			this->Controls->Add(this->label3);
 			this->Controls->Add(this->reiniciar_Btn);
 			this->Controls->Add(this->ordenar_Btn);
 			this->Controls->Add(this->label2);
@@ -318,10 +342,13 @@ namespace Proyecto1_FranciscoMorales_1223319 {
 		}
 #pragma endregion
 
+		//El único objeto global es el mismo simulador, que realiza toda la lógica del programa
 		Gasolinera *simulador;
 
 	private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
+		//Cuando carga el formulario, se crea el simulador
 		simulador = new Gasolinera();
+		//Se actualizan los datos en el formulario
 		pila_Lbl->Text = simulador->EstadoPila();
 		cola_Lbl->Text = simulador->EstadoCola();
 		precio1Lbl->Text = simulador->EstadoPrecio1();
@@ -329,60 +356,78 @@ namespace Proyecto1_FranciscoMorales_1223319 {
 	}
 
 	private: System::Void ingresar_Btn_Click(System::Object^  sender, System::EventArgs^  e) {
+		//Se ingresan los números en la lista del primer precio
 		simulador->Agregar(precio1Tbx->Text, true);
+		//Se actualizan los datos en el formulario
 		pila_Lbl->Text = simulador->EstadoPila();
 		cola_Lbl->Text = simulador->EstadoCola();
 		precio1Lbl->Text = simulador->EstadoPrecio1();
+		//Se habilitan los botones de eliminar y reiniciar, así como cambia el texto de este botón
 		eliminar1_Btn->Enabled = true;
 		reiniciar_Btn->Enabled = true;
 		ingresar_Btn->Text = "Cambiar";
 	}
 
 	private: System::Void ingresarPrecio2_Btn_Click(System::Object^  sender, System::EventArgs^  e) {
+		//Se ingresan los números en la lista del segundo precio
 		simulador->Agregar(precio2Tbx->Text, false);
+		//Se actualizan los datos en el formulario
 		pila_Lbl->Text = simulador->EstadoPila();
 		cola_Lbl->Text = simulador->EstadoCola();
 		precio2Lbl->Text = simulador->EstadoPrecio2();
+		//Se habilitan los botones de eliminar y reiniciar, así como cambia el texto de este botón
 		eliminar2_Btn->Enabled = true;
 		reiniciar_Btn->Enabled = true;
 		ingresarPrecio2_Btn->Text = "Cambiar";
 	}
 
 	private: System::Void eliminar1_Btn_Click(System::Object^  sender, System::EventArgs^  e) {
+		//Se eliminan los números de la lista del primer precio
 		simulador->Eliminar(true);
+		//Se actualizan los datos en el formulario
 		pila_Lbl->Text = simulador->EstadoPila();
 		cola_Lbl->Text = simulador->EstadoCola();
 		precio1Lbl->Text = simulador->EstadoPrecio1();
+		//Se deshabilita este botón y se cambia el texto del botón de ingresar relacionado a este
 		eliminar1_Btn->Enabled = false;
 		ingresar_Btn->Text = "Ingresar";
 		precio1Tbx->Clear();
 	}
 
 	private: System::Void eliminar2_Btn_Click(System::Object^  sender, System::EventArgs^  e) {
+		//Se eliminan los números de la lista del segundo precio
 		simulador->Eliminar(false);
+		//Se actualizan los datos en el formulario
 		pila_Lbl->Text = simulador->EstadoPila();
 		cola_Lbl->Text = simulador->EstadoCola();
 		precio2Lbl->Text = simulador->EstadoPrecio2();
+		//Se deshabilita este botón y se cambia el texto del botón de ingresar relacionado a este
 		eliminar2_Btn->Enabled = false;
 		ingresarPrecio2_Btn->Text = "Ingresar";
 		precio2Tbx->Clear();
 	}
 
 	private: System::Void ordenar_Btn_Click(System::Object^  sender, System::EventArgs^  e) {
+		//Se ordenan la pila y la cola con sus elementos actuales
 		simulador->Ordenar();
+		//Se actualizan los datos en el formulario
 		pila_Lbl->Text = simulador->EstadoPila();
 		cola_Lbl->Text = simulador->EstadoCola();
 	}
 
 	private: System::Void Reiniciar_Btn_Click(System::Object^  sender, System::EventArgs^  e) {
+		//Se vuelve a crear el simulador
 		simulador = new Gasolinera();
+		//Se actualizan los datos en el formulario
 		pila_Lbl->Text = simulador->EstadoPila();
 		cola_Lbl->Text = simulador->EstadoCola();
 		precio1Lbl->Text = simulador->EstadoPrecio1();
 		precio2Lbl->Text = simulador->EstadoPrecio2();
+		//Se deshabilitan los botones de eliminar y reiniciar
 		eliminar1_Btn->Enabled = false;
 		eliminar2_Btn->Enabled = false;
 		reiniciar_Btn->Enabled = false;
+		//Se limpian los Textbox
 		precio1Tbx->Clear();
 		precio2Tbx->Clear();
 	}

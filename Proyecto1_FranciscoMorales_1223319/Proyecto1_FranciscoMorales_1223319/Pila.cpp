@@ -36,6 +36,21 @@ void Pila::Llenar() {
 	}
 }
 
+void Pila::SelectionSort() {
+	Nodo *pos = head;
+	while (pos != nullptr) {
+		int n = ObtenerMayor(pos->numero, pos);
+		int posicion = BuscarRecursivo(n, pos);
+		Nodo *aux = pos;
+		for (int i = 0; i < posicion; i++) {
+			aux = aux->sig;
+		}
+		aux->numero = pos->numero;
+		pos->numero = n;
+		pos = pos->sig;
+	}
+}
+
 int Pila::Buscar(int n) {
 	if (head != nullptr) {
 		return BuscarRecursivo(n, head);
@@ -47,6 +62,18 @@ int Pila::Buscar(int n) {
 
 System::String^Pila::String() {
 	return StringRecursivo(head);
+}
+
+int Pila::ObtenerMayor(int mayor, Nodo *pos) {
+	if (pos->numero > mayor) {
+		mayor = pos->numero;
+	}
+	if (pos->sig == nullptr) {
+		return mayor;
+	}
+	else {
+		return ObtenerMayor(mayor, pos->sig);
+	}
 }
 
 int Pila::BuscarRecursivo(int n, Nodo *pos) {

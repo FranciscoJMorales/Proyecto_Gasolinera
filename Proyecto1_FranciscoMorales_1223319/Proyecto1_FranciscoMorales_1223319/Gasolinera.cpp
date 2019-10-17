@@ -39,11 +39,11 @@ void Gasolinera::Agregar(System::String ^nuevo, bool lista) {
 			}
 		}
 		else {
-			System::Windows::Forms::MessageBox::Show("El número ingresado no es válido");
+			System::Windows::Forms::MessageBox::Show("El número ingresado no es válido\nEl número debe tener el formato 00.00");
 		}
 	}
 	catch (...) {
-		System::Windows::Forms::MessageBox::Show("El número ingresado no es válido");
+		System::Windows::Forms::MessageBox::Show("El número ingresado no es válido\nEl número debe tener el formato 00.00");
 	}
 }
 
@@ -65,7 +65,8 @@ void Gasolinera::Eliminar(bool lista) {
 }
 
 void Gasolinera::Ordenar() {
-
+	pila->SelectionSort();
+	cola->SelectionSort();
 }
 
 System::String^Gasolinera::EstadoPila() {

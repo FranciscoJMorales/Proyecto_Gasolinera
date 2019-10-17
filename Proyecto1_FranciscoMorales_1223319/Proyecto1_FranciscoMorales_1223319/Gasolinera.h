@@ -4,6 +4,7 @@
 #include "Pila.h"
 #include "Cola.h"
 
+//Toda la documentación de la clase Gasolinera se realiza en el archivo .cpp
 class Gasolinera
 {
 public:
@@ -19,10 +20,13 @@ public:
 	System::String^Gasolinera::EstadoPrecio2();
 
 private:
+	//Estructuras de datos para guardar los números
+	//Son privados para evitar el manejo de la memoria desde el formulario MyForm
 	Pila *pila;
 	Cola *cola;
 	Lista *lista1;
 	Lista *lista2;
+	//Pila auxiliar utiizada para mover los elementos de la pila principal
 	Pila *aux;
 	
 	void Gasolinera::Insertar(int n, Lista *destino);

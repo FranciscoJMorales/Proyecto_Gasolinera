@@ -3,6 +3,7 @@
 using namespace System;
 using namespace System::Windows::Forms;
 
+//Método utilizado para iniciar a correr el programa
 [STAThreadAttribute]
 void main(array<String^>^ args) {
 	Application::EnableVisualStyles();
