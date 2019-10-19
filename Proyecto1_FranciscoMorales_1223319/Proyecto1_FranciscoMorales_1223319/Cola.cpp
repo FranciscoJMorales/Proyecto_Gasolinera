@@ -17,10 +17,8 @@ Cola::~Cola()
 void Cola::Push(Nodo *nuevo) {
 	//Si la cabeza está vacía, indica que la cola está vacía
 	if (head == nullptr) {
-		//En este caso, el nuevo nodo se asigna también a la cola, y se enlaza con la cabeza
+		//En este caso, el nuevo nodo se asigna también a la cola
 		tail = nuevo;
-		tail->ant = head;
-		nuevo->sig = tail;
 	}
 	else {
 		//En caso que no esté vacío, únicamente se agrega el nuevo nodo y se enlaza con la cabeza actual
@@ -38,19 +36,10 @@ int Cola::Shift() {
 		return -1;
 	}
 	else {
-		if (tail == head) {
-			//Si la cola tiene un único elemento, se devuelve y la cola queda vacía
-			int aux = tail->numero;
-			tail = nullptr;
-			head = nullptr;
-			return aux;
-		}
-		else {
-			//En caso de tener más elementos, devuelve el valor en la cola (puntero) y esta se desenlaza de la cola
-			int aux = tail->numero;
-			tail = tail->ant;
-			return aux;
-		}
+		//En caso de tener al menos un elemento, devuelve el valor en la cola (puntero) y esta se desenlaza de la cola
+		int aux = tail->numero;
+		tail = tail->ant;
+		return aux;
 	}
 }
 
@@ -93,32 +82,15 @@ int Cola::Buscar(int n) {
 		return -1;
 	}
 	else {
-		if (tail == head) {
-			//Si la cola es de una sola unidad
-			if (tail->numero == n) {
-				return 0;
-			}
-			else {
-				return -1;
-			}
-		}
-		else {
-			//Llama a una función recursiva para encontrar la posición del número
-			return BuscarRecursivo(n, tail);
-		}
+		//Llama a una función recursiva para encontrar la posición del número
+		return BuscarRecursivo(n, tail);
 	}
 }
 
 //Devuelve una cadena representativa del estado actual de la cola
 System::String^Cola::String() {
-	if (tail == head) {
-		//Si la cola solo tiene un elemento
-		return System::Convert::ToString(tail->numero);
-	}
-	else {
-		//Llama a una función recursiva para mostrar todos los elementos de la cola
-		return StringRecursivo(tail);
-	}
+	//Llama a una función recursiva para mostrar todos los elementos de la cola
+	return StringRecursivo(tail);
 }
 
 //Obtiene el número menor de la cola a partir de la primera posición enviada. Función recursiva

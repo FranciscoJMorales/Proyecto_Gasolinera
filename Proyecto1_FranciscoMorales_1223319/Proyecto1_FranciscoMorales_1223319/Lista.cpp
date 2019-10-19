@@ -1,6 +1,7 @@
 #include "Lista.h"
 
-
+//Para la lista no se implementaron todos los métodos característicos de una lista, puesto que no a todos de les daría uso
+//Los únicos métodos implementados fueron para agregar y eliminar elementos a la lista
 
 Lista::Lista()
 {
@@ -45,32 +46,42 @@ int Lista::Eliminar() {
 	}
 }
 
+//Devuelve una representación de la lista actual, con formato "Q00.00"
 System::String^Lista::String() {
+	//Llama a una función recursiva para mostrar todos los elementos
 	System::String ^estado = StringRecursivo(head);
+	//Le aplica el formato antes de devolver la cadena
 	estado = "Q" + estado->Insert(2, ".");
 	return estado;
 }
 
+//Procedimiento recursivo que agrega el nuevo número al final de la lista
 void Lista::AgregarRecursivo(Nodo *nuevo, Nodo *pos) {
+	//Si no es el último elemento, llama al próximo elemento
 	if (pos->sig != nullptr) {
 		AgregarRecursivo(nuevo, pos->sig);
 	}
 	else {
+		//Si es el úlitmo elemento, se enlaza con el nuevo elemento
 		pos->sig = nuevo;
 		nuevo->ant = pos;
 	}
 }
 
+//Función recursiva que devuelve todos los elementos de la lista
 System::String^Lista::StringRecursivo(Nodo *pos) {
 	if (pos != nullptr) {
 		if (pos->sig == nullptr) {
+			//Si no hay siguiente elemento, termina con la recursividad
 			return System::Convert::ToString(pos->numero);
 		}
 		else {
+			//Si hay más elementos, concatena la cadena actual con el siguiente elemento
 			return System::Convert::ToString(pos->numero) + StringRecursivo(pos->sig);
 		}
 	}
 	else {
+		//Valor por retornar si la lista está vacía
 		return "----";
 	}
 }
